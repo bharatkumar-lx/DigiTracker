@@ -1,10 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:gravity="bottom"
+    android:orientation="vertical">
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:id="@+id/nav_host_fragment"-->
+<!--        android:name="androidx.navigation.fragment.NavHostFragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:defaultNavHost="true"-->
+<!--        app:navGraph="@navigation/nav_graph"-->
+<!--        />-->
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="90dp"
+       android:orientation="horizontal"
+       android:gravity="bottom"
+       android:layout_marginBottom="0dp"
+       android:background="#7732F2"
+       >
+       <ImageButton
+           android:layout_width="wrap_content"
+           android:layout_height="100dp"
+           android:text="@string/dashboard"
+           android:layout_weight="25"
+           android:src="@drawable/ic_baseline_dashboard_24"
+           android:background="#7732F2"
+           android:contentDescription="Dashboard" />
+       <ImageButton
+           android:layout_width="wrap_content"
+           android:layout_height="100dp"
+           android:text="@string/network"
+           android:layout_weight="25"
+           android:src="@drawable/ic_baseline_signal_cellular_alt_24"
+           android:background="#7732F2"
+
+           android:contentDescription="@string/network" />
+       <ImageButton
+           android:layout_width="wrap_content"
+           android:layout_height="100dp"
+           android:text="@string/lock_app"
+           android:layout_weight="25"
+           android:src="@drawable/ic_baseline_app_blocking_24"
+           android:background="#7732F2"
+           android:contentDescription="@string/lock_app" />
+       <androidx.appcompat.widget.AppCompatImageButton
+           android:layout_width="wrap_content"
+           android:layout_height="100dp"
+           android:text="@string/setting"
+           android:layout_weight="25"
+           android:src="@drawable/ic_baseline_settings_24"
+           android:background="#7732F2"
+           android:contentDescription="@string/setting"
+           />
+
+   </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

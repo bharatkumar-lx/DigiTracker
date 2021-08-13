@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DigiTracker</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="network">Network</string>
+    <string name="lock_app">Lock apps</string>
+    <string name="setting">Setting</string>
 </resources>
