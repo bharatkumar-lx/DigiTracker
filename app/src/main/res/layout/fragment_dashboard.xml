@@ -1,0 +1,37 @@
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_dash"
+    android:layout_gravity="bottom"
+    android:orientation="vertical"
+    tools:context="dashboard.DashboardFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        >
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/usage_timer"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:padding="25dp"
+            android:text="00:00:00"
+            android:textSize="90dp" />
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="hours"
+            android:textAlignment="center"
+            android:textSize="30dp" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/app_recycler_view"/>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
