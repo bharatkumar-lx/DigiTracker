@@ -1,4 +1,4 @@
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,14 +13,14 @@
         android:orientation="vertical"
         >
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:id="@+id/usage_timer"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:padding="25dp"
             android:text="00:00:00"
             android:textSize="90dp" />
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="hours"
@@ -34,4 +34,4 @@
         android:id="@+id/app_recycler_view"/>
 
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</LinearLayout>
