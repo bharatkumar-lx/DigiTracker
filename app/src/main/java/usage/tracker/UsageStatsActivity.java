@@ -97,7 +97,7 @@ public class UsageStatsActivity extends Activity implements OnItemSelectedListen
         UsageStatsAdapter() {
             Calendar cal = Calendar.getInstance();
             cal.add(Calendar.DAY_OF_YEAR, -5);
-
+            // mUsageStatsManager.queryUsageStats use for get usage statistics for 5 days
             final List<UsageStats> stats =
                     mUsageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_BEST,
                             cal.getTimeInMillis(), System.currentTimeMillis());
@@ -109,12 +109,13 @@ public class UsageStatsActivity extends Activity implements OnItemSelectedListen
             final int statCount = stats.size();
             for (int i = 0; i < statCount; i++) {
                 final android.app.usage.UsageStats pkgStats = stats.get(i);
-
                 // load application labels for each application
                 try {
                     ApplicationInfo appInfo = mPm.getApplicationInfo(pkgStats.getPackageName(), 0);
                     String label = appInfo.loadLabel(mPm).toString();
+
                     mAppLabelMap.put(pkgStats.getPackageName(), label);
+                    Log.e("two",pkgStats.getPackageName()+"  "+ label);
 
                     UsageStats existingStats =
                             map.get(pkgStats.getPackageName());
@@ -123,7 +124,7 @@ public class UsageStatsActivity extends Activity implements OnItemSelectedListen
                     } else {
                         existingStats.add(pkgStats);
                     }
-
+                    Log.e("one", map.get(pkgStats.getPackageName()).toString());
                 } catch (NameNotFoundException e) {
                     // This package may be gone.
                 }
@@ -219,10 +220,9 @@ public class UsageStatsActivity extends Activity implements OnItemSelectedListen
         super.onCreate(icicle);
         setContentView(R.layout.usage_stats);
 
-        mUsageStatsManager = (UsageStatsManager) getSystemService(Context.USAGE_STATS_SERVICE);
+        mUsageStatsManager = (UsageStatsManager)getSystemService(Context.USAGE_STATS_SERVICE);
         mInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mPm = getPackageManager();
-
         Spinner typeSpinner = (Spinner) findViewById(R.id.typeSpinner);
         typeSpinner.setOnItemSelectedListener(this);
 

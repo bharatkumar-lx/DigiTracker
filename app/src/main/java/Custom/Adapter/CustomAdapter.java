@@ -1,12 +1,18 @@
 package Custom.Adapter;
 
-import android.service.autofill.TextValueSanitizer;
+import android.app.usage.UsageStats;
+import android.content.pm.ApplicationInfo;
+import android.graphics.drawable.Drawable;
+import android.text.format.DateUtils;
+import android.util.ArrayMap;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewStructure;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
@@ -14,19 +20,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import bharat.kumar.digitracker.R;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
-    private ArrayList<DataClass> dataset = new ArrayList<>();
-    //TODO: CREATE A CLASS FOR DATA AND ARRAYLIST AND BIND IT WITH THE VIEW;
+    private ArrayList<UsageStats> dataset ;
+    private final ArrayMap<String,String > mAppLableMap;
+    private ArrayMap<String,Drawable > mAppLogoMap;
+    //VIEW HOLDER CLASS BIND VIEWS WITH CUSTOM ADAPTER
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView textView;
+        public ImageView imageView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.info_text);
+            imageView = itemView.findViewById(R.id.apps_logo);
         }
 
     }
 
-    public CustomAdapter(ArrayList<DataClass> dataset) {
+    public CustomAdapter(ArrayList<UsageStats> dataset, ArrayMap<String ,String> mAppLableMap, ArrayMap<String, Drawable> mAppLogoMap) {
+        this.mAppLableMap = mAppLableMap;
         this.dataset = dataset;
+        this.mAppLogoMap = mAppLogoMap;
     }
 
     @NonNull
@@ -39,7 +51,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textView.setText(dataset.get(position).getTimeUse());
+        String timeUse = mAppLableMap.get(dataset.get(position).getPackageName());
+//        if(timeUse.equals("00:00")){
+//            return;
+//        }
+        holder.textView.setText(timeUse);
+        holder.imageView.setImageDrawable(mAppLogoMap.get(dataset.get(position).getPackageName()));
     }
 
     @Override
