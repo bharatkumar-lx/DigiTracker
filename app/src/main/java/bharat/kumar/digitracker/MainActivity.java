@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -27,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         boolean granted =false;
-
+        for(String s : this.databaseList()){
+            Log.e("database", "onCreate: database exits:" + s );
+        }
         AppOpsManager appOps = (AppOpsManager) getApplicationContext()
                                 .getSystemService(Context.APP_OPS_SERVICE);
         int mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS,
